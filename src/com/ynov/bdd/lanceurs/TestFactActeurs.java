@@ -27,6 +27,12 @@ public class TestFactActeurs {
 		fa.suivant();
 		System.out.println(fa.afficheActeurCourant());
 		System.out.println(fa.bandeau());
+		fa.precedent();
+		System.out.println(fa.afficheActeurCourant());
+		System.out.println(fa.bandeau());	
+		fa.precedent();
+		System.out.println(fa.afficheActeurCourant());
+		System.out.println(fa.bandeau());	
 		
 		
 	}

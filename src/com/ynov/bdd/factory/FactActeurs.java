@@ -25,26 +25,26 @@ public class FactActeurs
 			String sql = "SELECT * FROM acteurs";
 			ResultSet rs = connect.select(sql);
 			
+			//boucle tant que y a un enregistrement
 			while(rs.next()) 
 			{
+				//recup chaque champ
 				int code = rs.getInt("codeActeur");
 				String prenom = rs.getString("prenomActeur");
 				String nom = rs.getString("nomActeur");
 				int annee = rs.getInt("anneeNaissanceActeur");
 				int sexe = rs.getInt("sexeActeur");
+				//créer un pbjet Acteur
 				Acteur acteur = new Acteur(code, nom, prenom, sexe, annee);
+				//ajouter l'objet à la collection
 				collection.add(acteur);
 			}
 		}
 		catch(Exception exc)
 		{
 			System.err.println(exc.getMessage());
-		}
-			
-			//boucle tant que y a un enregistrement
-				//recup chaque champ
-				//créer un pbjet Acteur
-				//ajouter l'objet à la collection
+		}			
+				
 	}
 	
 	public Acteur afficheActeurCourant()
@@ -54,7 +54,7 @@ public class FactActeurs
 	
 	public void precedent()
 	{
-		if(curseur<collection.size()-1)
+		if(curseur<collection.size()+1)
 		{
 			curseur--;
 		}
@@ -62,7 +62,7 @@ public class FactActeurs
 	
 	public void suivant()
 	{
-		if(curseur<collection.size())
+		if(curseur<collection.size()+1)
 		{
 			curseur++;
 		}
@@ -70,12 +70,12 @@ public class FactActeurs
 	
 	public void premier()
 	{
-		
+		curseur = 1;
 	}
 	
 	public void dernier()
 	{
-		
+		curseur = collection.size()-1;
 	}
 	
 	public String bandeau()
@@ -90,6 +90,6 @@ public class FactActeurs
 	
 	public boolean estDernier()
 	{
-		return false;
+		return curseur == collection.size()-1;
 	}
 }
