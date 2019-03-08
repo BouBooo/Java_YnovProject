@@ -27,12 +27,44 @@ public class TestFactActeurs {
 		fa.suivant();
 		System.out.println(fa.afficheActeurCourant());
 		System.out.println(fa.bandeau());
+		
+		//precedent
 		fa.precedent();
 		System.out.println(fa.afficheActeurCourant());
 		System.out.println(fa.bandeau());	
 		fa.precedent();
 		System.out.println(fa.afficheActeurCourant());
-		System.out.println(fa.bandeau());	
+		System.out.println(fa.bandeau());
+		
+		fa.suivant();
+		System.out.println(fa.afficheActeurCourant());
+		System.out.println(fa.bandeau());
+		fa.suivant();
+		System.out.println(fa.afficheActeurCourant());
+		System.out.println(fa.bandeau());
+		
+		fa.estPremier();
+		if(fa.estPremier())
+		{
+			System.out.print("Cet acteur est le premier\n");
+		}
+		else
+		{
+			System.out.print("Cet acteur n'est pas le premier\n");
+		}
+		
+		fa.estDernier();
+		if(fa.estDernier())
+		{
+			System.out.print("Cet acteur est le dernier\n");
+		}
+		else
+		{
+			System.out.print("Cet acteur n'est pas le dernier\n");
+		}
+		
+		//System.out.println(fa.estPremier());
+		//System.out.println(fa.estDernier());
 		
 		
 	}
