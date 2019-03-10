@@ -28,10 +28,22 @@ public class ActeurFrame extends JFrame implements ActionListener {
 		jtf_code = new JTextField();
 		panelData.add(jtf_code);
 		
-		//pareil pour prenom, nom, annee, sexe
-		//
-		//
-		//
+		panelData.add(new JLabel("Prénom: "));
+		jtf_prenom = new JTextField();
+		panelData.add(jtf_prenom);
+		
+		panelData.add(new JLabel("Nom: "));
+		jtf_nom = new JTextField();
+		panelData.add(jtf_nom);
+		
+		panelData.add(new JLabel("Annee: "));
+		jtf_annee = new JTextField();
+		panelData.add(jtf_annee);
+		
+		panelData.add(new JLabel("Sexe: "));
+		jtf_sexe = new JTextField();
+		panelData.add(jtf_sexe);
+	
 		
 		//on colle le panelData dans la frame
 		add(panelData);
@@ -39,15 +51,19 @@ public class ActeurFrame extends JFrame implements ActionListener {
 		//panel des boutons
 		JPanel panelBoutons = new JPanel(new GridLayout(1, 5, 10, 10));
 		
-		//bouton premier
+		
 		jb_premier = new JButton("|<<");
 		panelBoutons.add(jb_premier);
 		
-		//autres boutons
+		jb_dernier = new JButton(">>|");
+		panelBoutons.add(jb_dernier);
 		
-		//
-		//
-		//
+		jb_suivant = new JButton(">");
+		panelBoutons.add(jb_suivant);
+		
+		jb_precedent = new JButton("<");
+		panelBoutons.add(jb_precedent);
+		
 		
 		add(panelBoutons,BorderLayout.SOUTH);
 		
