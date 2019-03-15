@@ -16,6 +16,7 @@ public class LanceurGUI {
 		//On rend visible la fenetre
 		guiframe.setVisible(true);
 
+
 	}
 
 }

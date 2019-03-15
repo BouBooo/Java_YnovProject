@@ -23,10 +23,11 @@ public class ActeurFrame extends JFrame implements ActionListener {
 
 	private JTextField jtf_code, jtf_prenom, jtf_nom, jtf_annee, jtf_sexe;
 	private JButton jb_premier, jb_precedent, jb_suivant, jb_dernier, jb_quit;
-	private ArrayList<FactActeurs> collection = new ArrayList<FactActeurs>();
+	private FactActeurs collec;
 	
 	public ActeurFrame()
 	{
+		collec = new FactActeurs();
 		//Frame size
 		setSize(400, 300);
 		
@@ -71,27 +72,82 @@ public class ActeurFrame extends JFrame implements ActionListener {
 		jb_premier = new JButton("|<<");
 		panelBoutons.add(jb_premier);
 		
-		jb_dernier = new JButton(">>|");
-		panelBoutons.add(jb_dernier);
+		jb_precedent = new JButton("<");
+		panelBoutons.add(jb_precedent);
 		
 		jb_suivant = new JButton(">");
 		panelBoutons.add(jb_suivant);
 		
-		jb_precedent = new JButton("<");
-		panelBoutons.add(jb_precedent);
+		jb_dernier = new JButton(">>|");
+		panelBoutons.add(jb_dernier);
+
 		
 		jb_quit = new JButton("X");
 		panelBoutons.add(jb_quit);
 		
+		//listen
+		jb_premier.addActionListener(this);
+		jb_dernier.addActionListener(this);
+		jb_suivant.addActionListener(this);
+		jb_precedent.addActionListener(this);
+		jb_quit.addActionListener(this);
+		
 		
 		add(panelBoutons,BorderLayout.SOUTH);
 		
+		afficheActeur();
+		btnDisable();
+		
 	}
 		
+	public void afficheActeur()
+	{
+		setTitle(collec.bandeau());
+		Acteur current_acteur = collec.afficheActeurCourant();
+		jtf_code.setText(String.valueOf(current_acteur.getCodeActeur()));
+		jtf_prenom.setText(String.valueOf(current_acteur.getPrenomActeur()));
+		jtf_nom.setText(String.valueOf(current_acteur.getNomActeur()));
+		jtf_annee.setText(String.valueOf(current_acteur.getAnneeNaissanceActeur()));
+		jtf_sexe.setText(String.valueOf(current_acteur.getSexeActeur()));
+		
+	}
+	
+	public void btnDisable()
+	{
+		jb_premier.setEnabled(!collec.estPremier());
+		jb_dernier.setEnabled(!collec.estDernier());
+		jb_precedent.setEnabled(!collec.estPremier());
+		jb_suivant.setEnabled(!collec.estDernier());
+	}
+	
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		if(e.getSource()==jb_premier)
+		{
+			collec.premier();
+			
+		}
+		else if(e.getSource()==jb_dernier)
+		{
+			collec.dernier();
+		}
+		else if(e.getSource()==jb_suivant)
+		{
+			collec.suivant();
+	
+		}
+		else if(e.getSource()==jb_precedent)
+		{
+			collec.precedent();
+		}
+		else if(e.getSource()==jb_quit)
+		{
+			System.exit(0);
+		}
+		
+		afficheActeur();
+		btnDisable();
 	}
-
 }

@@ -54,7 +54,7 @@ public class FactActeurs
 	
 	public void precedent()
 	{
-		if(curseur<collection.size()+1)
+		if(curseur>0)
 		{
 			curseur--;
 		}
@@ -62,7 +62,7 @@ public class FactActeurs
 	
 	public void suivant()
 	{
-		if(curseur<collection.size()+1)
+		if(curseur<collection.size()-1)
 		{
 			curseur++;
 		}
@@ -70,7 +70,7 @@ public class FactActeurs
 	
 	public void premier()
 	{
-		curseur = 1;
+		curseur = 0;
 	}
 	
 	public void dernier()
